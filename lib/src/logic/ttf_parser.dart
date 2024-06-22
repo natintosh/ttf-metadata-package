@@ -1,6 +1,6 @@
 import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
+import 'dart:developer';
+import 'dart:typed_data';
 
 import 'font_metrics.dart';
 import 'ttf_bitmap.dart';
@@ -141,7 +141,7 @@ class TtfParser {
           fontName = utf8.decode(bytes.buffer
               .asUint8List(basePosition + stringOffset + offset, length));
         } catch (a) {
-          debugPrint('Error: $platformID $nameID $a');
+          log('Error: $platformID $nameID $a');
           rethrow;
         }
       }
@@ -151,7 +151,7 @@ class TtfParser {
           return _decodeUtf16(bytes.buffer
               .asUint8List(basePosition + stringOffset + offset, length));
         } catch (a) {
-          debugPrint('Error: $platformID $nameID $a');
+          log('Error: $platformID $nameID $a');
           rethrow;
         }
       }
